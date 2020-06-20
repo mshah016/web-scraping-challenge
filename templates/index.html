@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html class="no-js"> 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <style>
+            div.article {
+                width: 60%;
+                /* background-color: yellow; */
+                text-align: center;
+                float: left;
+                padding: 11.2%;
+            }
+
+            div.post {
+                width: 40%;
+                /* background-color: green; */
+                float: right;
+                padding: 5%;
+            }
+
+            div.facts {
+                width: 40%;
+                /* background-color: purple; */
+                padding: 5%;
+                float: right;
+            }
+
+            h3.image-title {
+                background-color: aquamarine;
+                text-align: center;
+            }
+
+            div.recent-image {
+                width: 100%;
+                /* background-color: pink; */
+                padding: 5%;
+                text-align: center;
+            }
+
+            div.recent-image > h3 {
+                padding-left: 40%;
+                padding-bottom: 10%;
+            }
+
+            div.row {
+                display: inline;
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <div class="jumbotron text-center">
+
+            <h1>Mission to Mars</h1>
+
+            <p class="button">
+                <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a>
+            </p>
+
+            <div class="article">
+                <h2><b>Latest News Article:</b></h2>
+                <h3>{{ information.title }}</h3>
+                <h4>{{ information.summary }}</h4>
+            </div>
+
+            <div class="post">
+                <h3><b>Latest Twitter Post</b></h3>
+                <h4>{{ information.post }}</h4>
+            </div>
+
+            <div class="facts table">
+                <h3><b>Facts:</b></h3>
+                <h4>{{ information.facts |safe}}</h4>
+            </div>
+
+            
+            <div class="recent-image">
+                <h3><b>Featured Image</b></h3>
+                <img src="{{ information.image }}" alt="Mars Image">
+            </div>
+
+            <div class = "row">
+                {% for hemisphere in information.hemispheres %}
+                    <img src="{{ hemisphere.image_url }}" width="300", height="300">
+                {% endfor %}             
+
+            </div>
+
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>

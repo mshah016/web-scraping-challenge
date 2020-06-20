@@ -14,12 +14,18 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
         <style>
+            body {
+                background-color: darkcyan;
+            }
+
             div.article {
                 width: 60%;
                 /* background-color: yellow; */
                 text-align: center;
                 float: left;
-                padding: 11.2%;
+                padding-top: 5%;
+                padding-left: 1%;
+                padding-bottom: 11.2%;
             }
 
             div.post {
@@ -37,20 +43,21 @@
             }
 
             h3.image-title {
-                background-color: aquamarine;
-                text-align: center;
+                /* background-color: aquamarine; */
+                text-align: left;
             }
 
             div.recent-image {
-                width: 100%;
+                width: 60%;
                 /* background-color: pink; */
-                padding: 5%;
+                padding-left: 1%;
                 text-align: center;
             }
 
             div.recent-image > h3 {
-                padding-left: 40%;
-                padding-bottom: 10%;
+                padding-left: 1%;
+                padding-bottom: 5%;
+                text-align: center;
             }
 
             div.row {
@@ -69,27 +76,36 @@
                 <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a>
             </p>
 
-            <div class="article">
-                <h2><b>Latest News Article:</b></h2>
-                <h3>{{ information.title }}</h3>
-                <h4>{{ information.summary }}</h4>
-            </div>
-
-            <div class="post">
-                <h3><b>Latest Twitter Post</b></h3>
-                <h4>{{ information.post }}</h4>
-            </div>
-
-            <div class="facts table">
-                <h3><b>Facts:</b></h3>
-                <h4>{{ information.facts |safe}}</h4>
-            </div>
-
-            
-            <div class="recent-image">
-                <h3><b>Featured Image</b></h3>
-                <img src="{{ information.image }}" alt="Mars Image">
-            </div>
+            <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <div class="article">
+                        <h2><b>Latest News Article:</b></h2>
+                        <h3>{{ information.title }}</h3>
+                        <h4>{{ information.summary }}</h4>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="post">
+                        <h3><b>Latest Twitter Post</b></h3>
+                        <h4>{{ information.post }}</h4>
+                    </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col">
+                    <div class="facts table">
+                        <h3><b>Facts:</b></h3>
+                        <h4>{{ information.facts |safe}}</h4>
+                    </div>        
+                  </div>
+                  <div class="col">
+                    <div class="recent-image">
+                        <h3><b>Featured Image</b></h3>
+                        <img src="{{ information.image }}" alt="Mars Image">
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             <div class = "row">
                 {% for hemisphere in information.hemispheres %}
